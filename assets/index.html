@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/i18n.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var i18n = window.vda.i18n;
+
+    var factory = new i18n.PluralizerFactory();
+    var storage = new i18n.KeyValueStorage();
+    var auditor = new i18n.NullAuditor();
+
+    var str = 'У %{numRabbits}%{numRabbits,sexRabbits->-го|-ой,-х,-ти,} %{numRabbits, sexRabbits -> зайчика|зайчихи,зайчиков|зайчих,зайчиков|зайчих,зайчика|зайчихи} %{numLegs} %{numLegs -> лапка,лапки,лапок,лапки}. Среди них затесал%{,sexRabbits->ся заяц|сь зайчиха}-мутант';
+    [
+        {translation: str, key: 'rabbit', lang: 'ru'}
+    ].map(function(value) {
+        storage.set(new i18n.Translation(value.translation, value.key, value.lang));
+    });
+
+    var service = new i18n.I18nService(storage, factory, auditor);
+
+    function l(numRabbits, sexRabbits, numLegs) {
+        console.log(service.translate(new i18n.TranslationId('rabbit', 'ru'), {numRabbits: numRabbits, sexRabbits: sexRabbits, numLegs: numLegs}));
+    }
+</script>
+</body>
+</html>
