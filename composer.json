@@ -1,0 +1,7 @@
+{
+    "name": "vda/i18n-js",
+    "type": "library",
+    "description": "A jsvsacript port of the vda/i18n library",
+    "keywords": ["i18n"],    
+    "minimum-stability": "dev"
+}
