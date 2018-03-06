@@ -113,6 +113,10 @@
     i18n.PluralizerFactory = PluralizerFactory;
 
     PluralizerFactory.prototype.getPluralizer = function(lang) {
+        if (this._pluralizers[lang] == null) {
+            return null;
+        }
+
         return new this._pluralizers[lang]();
     };
 
