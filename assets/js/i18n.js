@@ -103,7 +103,8 @@
         this._pluralizers = {
             ru: Russian,
             en: English,
-            it: English
+            it: English,
+            es: English
         };
 
         if (!this._pluralizers[this._defaultLang]) {
